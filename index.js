@@ -16,7 +16,8 @@ app.use(express.json())
 app.use("/api/admin", require("./routers/adminRouter"))
 
 app.use("*", (req, res) => {
-    res.status(404).json({ message: "Resource Not Eound" })
+    res.sendFile(path.join(__dirname, "dist", "index.html"))
+    // res.status(404).json({ message: "Resource Not Found" })
 })
 app.use((err, req, res, next) => {
     res.status(500).json({ message: err.message || "something Went Wrong" })
